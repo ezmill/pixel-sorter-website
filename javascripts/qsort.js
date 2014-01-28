@@ -3,7 +3,7 @@ new Uploader("#upload", setImage);
 
 function setImage(uri){
   canvas=document.createElement('canvas');
-  document.body.appendChild(canvas);
+  $('#save-button').before(canvas);
    canvas.width=400;
    canvas.height=400;
   scale = 1;
@@ -41,11 +41,14 @@ function setImage(uri){
            }
         }
         ctx.putImageData(copy,0,0);
+        $("#save-button").css({ "display": "block"});
         
     }
       setInterval(function(){copyLoop();},30);
 
   };
+
+
   
 }
 
@@ -60,4 +63,22 @@ function swap(x,rl,rr,gl,gr,bl,br){
   x[bl]=x[br];
   x[br]=tempb;
 }
+
+
+function save(element){
+  window.open(element.get(0).toDataURL('image/jpeg'));
+}
+
+
+  $('#save-button').click(function(event){
+    // if (!$('canvas')) {
+    //             window.alert('Please select a file');
+    //         } else {
+    //             save();
+    //         }
+    event.preventDefault();
+    save($('canvas'));
+    console.log("ok");
+  });
+
 
