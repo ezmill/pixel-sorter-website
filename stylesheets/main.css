@@ -19,6 +19,12 @@ body {
 	text-align: center;
 }
 
+#save-button {
+  color: white;
+  display: none;
+  padding:20px;
+  margin:5px;
+}
 label{
 	color:white;
 	text-align: center;
